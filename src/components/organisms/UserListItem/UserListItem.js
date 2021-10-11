@@ -1,9 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components';
+import Button from 'components/atoms/Button/Button';
+
+
+const Wrapper = styled.li`
+    display: flex;
+    align-items: center;
+    position: relative;
+    &:not(:last-child)::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: lightgray;
+    }
+`;
+
+
 
 const UserListItem = ({userData: {average, name, attendance = '0%'}}) => {
     return (
-        <li>
+        <Wrapper>
             <div>
                 {average}
             </div>
@@ -15,10 +35,13 @@ const UserListItem = ({userData: {average, name, attendance = '0%'}}) => {
                     attendance: {attendance}
                 </p>
             </div>
-            <button>
+            <Button>
                 X
-            </button>
-        </li>
+            </Button>
+            <Button isSecondary borderRadius={"4px"}>
+                X
+            </Button>
+        </Wrapper>
     )
 }
 
