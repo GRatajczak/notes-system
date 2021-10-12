@@ -1,47 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
-
-
-const Wrapper = styled.li`
-    display: flex;
-    align-items: center;
-    position: relative;
-    &:not(:last-child)::after{
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 1px;
-        background-color: lightgray;
-    }
-`;
+import Average from 'components/atoms/Average/Average';
+import TitleUser from 'components/atoms/Title/Title';
+import SubtitleUser from 'components/atoms/SubtitleUser/SubtitleUser';
+import { StyledListElement, StyledButtonWrapper } from './UserListItem.styles';
 
 
 
 const UserListItem = ({userData: {average, name, attendance = '0%'}}) => {
     return (
-        <Wrapper>
+        <StyledListElement>
+            <Average number={Number(average)} marginRight={'24px'}/>
             <div>
-                {average}
+                <TitleUser title={name} />
+                <SubtitleUser percent={attendance}/>
             </div>
-            <div>
-                <p>
-                    {name}
-                </p>
-                <p>
-                    attendance: {attendance}
-                </p>
-            </div>
-            <Button>
-                X
-            </Button>
-            <Button isSecondary borderRadius={"4px"}>
-                X
-            </Button>
-        </Wrapper>
+            <StyledButtonWrapper>
+                <Button>
+                    X
+                </Button>
+                <Button isSecondary borderRadius={"4px"}>
+                    X
+                </Button>
+            </StyledButtonWrapper>
+        </StyledListElement>
     )
 }
 
