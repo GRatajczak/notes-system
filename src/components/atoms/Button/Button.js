@@ -3,11 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { StyledButton } from './Buttons.styles';
 
-const Button = ({isSecondary, borderRadius}) => {
+const Button = (props) => {
     return (
         <StyledButton 
-            isSecondary={isSecondary} 
-            borderRadius={borderRadius}
+            {...props}
         >
             X
         </StyledButton>

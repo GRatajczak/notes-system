@@ -1,5 +1,5 @@
 import React from 'react';
-import UsersList from 'components/molecules/UsersList/UsersList';
+import UsersList from 'components/organisms/UsersList/UsersList';
 import { GlobalStyles } from 'assets/styles/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';

@@ -8,7 +8,9 @@ import { StyledListElement, StyledButtonWrapper } from './UserListItem.styles';
 
 
 
-const UserListItem = ({userData: {average, name, attendance = '0%'}}) => {
+const UserListItem = ({deleteUser ,userData: {average, name, attendance = '0%'}}) => {
+
+    
     return (
         <StyledListElement>
             <Average number={Number(average)} marginRight={'24px'}/>
@@ -17,7 +19,7 @@ const UserListItem = ({userData: {average, name, attendance = '0%'}}) => {
                 <SubtitleUser percent={attendance}/>
             </div>
             <StyledButtonWrapper>
-                <Button>
+                <Button onClick={() => deleteUser(name)}>
                     X
                 </Button>
                 <Button isSecondary borderRadius={"4px"}>
