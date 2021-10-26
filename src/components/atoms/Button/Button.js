@@ -1,21 +1,13 @@
+import styled from 'styled-components'
 
-import React from 'react';
-import PropTypes from 'prop-types'
-import { StyledButton } from './Buttons.styles';
 
-const Button = (props) => {
-    return (
-        <StyledButton 
-            {...props}
-        >
-            X
-        </StyledButton>
-    );
-}
-
-StyledButton.propTypes = {
-    isSecondary: PropTypes.bool,
-    borderRadius: PropTypes.string,
-}
-
-export default Button;
+export const Button = styled.button`
+    padding:10px 20px;
+    border-radius: 10px;
+    border: 0;
+    background-color:${({theme}) => theme.colors.lightGrey};
+    font-size: ${({theme}) => theme.fontSize.m};
+    color: ${({theme}) => theme.colors.darkGrey};
+    cursor: pointer;
+    display: block;
+`;

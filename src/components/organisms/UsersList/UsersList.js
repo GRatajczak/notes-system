@@ -1,8 +1,10 @@
 import React, {useState, useEffect } from 'react';
 import UserListItem from 'components/molecules/UserListItem/UserListItem';
 import { users as userData } from 'data/users';
-import { StyledWrapper } from './UsersList.styles';
-
+import { StyledWrapper, FlexWrapper } from './UsersList.styles';
+import FormField from 'components/molecules/FormField/FormField';
+import {Button} from 'components/atoms/Button/Button';
+import styled from 'styled-components';
 
 const mocAPI = () => {
     return new Promise(resolve => {
@@ -66,10 +68,26 @@ const mocAPI = () => {
 //     }
 // };
 
+const InputWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px  #ddd;
+    h3 {
+        font-size: ${({ theme }) => theme.fontSize.l};
+    }
+`;
+
 const UsersList = () => {
 
         const [users, setUsers ] = useState([]);
-
+        const [formState, setFormState ] = useState({
+            name: '',
+            atd: '',
+            avg: ''
+        })
         // works like componentDidMount + componentDidUpdate + componentWillUnMount
         useEffect(
             ()=> {
@@ -100,22 +118,67 @@ const UsersList = () => {
             setUsers(filteredUsers)
         }
 
+        const handleInputChange = (e) => {
+            setFormState({...formState, [e.target.name]: e.target.value})
+        }
+
+        const handleNewUser = (e) => {
+            e.preventDefault();
+
+            const newUser = {
+                name: formState.name,
+                attendance: formState.atd,
+                average: formState.avg,
+            }
+
+            setUsers([...users,newUser])
+        }
+
         return(
-            <StyledWrapper>
-                <ul>
-                    {
-                        users.map(
-                            (userData, index) => (
-                                <UserListItem 
-                                    key={userData.name}
-                                    userData={userData}
-                                    deleteUser={deleteUser}
-                                />
+            <FlexWrapper>
+                <InputWrapper as="form">
+                    <h3>Add new student</h3>
+
+                    <FormField 
+                        name={'name'}  
+                        id={'name'} 
+                        label={'name'} 
+                        value={formState.name} 
+                        onChange={handleInputChange}
+                    />
+                    <FormField 
+                        name={'atd'}  
+                        id={'atd'} 
+                        label={'atd'} 
+                        value={formState.atd}  
+                        onChange={handleInputChange}
+                    />
+                    <FormField 
+                        name={'avg'} 
+                        id={'avg'} 
+                        label={'avg'} 
+                        value={formState.avg}  
+                        onChange={handleInputChange}
+                    />
+                    <Button onClick={handleNewUser}>Save </Button>
+                </InputWrapper>
+
+                <StyledWrapper>
+                    <ul>
+                        {
+                            users.map(
+                                (userData, index) => (
+                                    <UserListItem 
+                                        key={userData.name}
+                                        userData={userData}
+                                        deleteUser={deleteUser}
+                                    />
+                                )
                             )
-                        )
-                    }
-                </ul>
-            </StyledWrapper>
+                        }
+                    </ul>
+                </StyledWrapper>
+            </FlexWrapper>
         )
 };
 
