@@ -2,10 +2,19 @@ import React from 'react';
 
 import UsersList from 'components/organisms/UsersList/UsersList';
 import { GlobalStyles } from 'assets/styles/globalStyles';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Form from 'components/organisms/Form/Form'
+import Nav from 'components/organisms/Nav/Nav';
+
+
+const StyledMainContainer = styled.div`
+    display: flex;
+    align-items: center;
+    padding-left: 160px;
+    position: relative;
+`
 
 
 const Root = () => {
@@ -13,19 +22,18 @@ const Root = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/add-user">Add user</Link>
-        </nav>
         <GlobalStyles />
-        <Switch >
-          <Route path="/" exact>
-            <UsersList />
-          </Route>
-          <Route path="/add-user">
-            <h1>test</h1>
-          </Route>
-        </Switch>
+        <StyledMainContainer>
+          <Nav />
+          <Switch >
+            <Route path="/" exact>
+              <UsersList />
+            </Route>
+            <Route path="/add-user">
+              <h1>test</h1>
+            </Route>
+          </Switch>
+        </StyledMainContainer>
       </ThemeProvider>
     </Router>
   );
