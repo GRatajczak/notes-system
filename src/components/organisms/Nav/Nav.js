@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import React from 'react'
 import { StyledNav, StyledLogoWrapper } from './Nav.style';
 
@@ -10,8 +10,8 @@ const Nav = () => {
             <StyledLogoWrapper>
                 Note system
             </StyledLogoWrapper>
-            <Link to="/">Home</Link>
-            <Link to="/add-user">Add user</Link>
+            <NavLink exact to="/">Home</NavLink>
+            <NavLink to="/add-user">Add user</NavLink>
         </StyledNav>
     );
 }

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledNav = styled.nav`
@@ -10,6 +9,35 @@ export const StyledNav = styled.nav`
     left: 0%;
     top: 0;
     border-right: 1px solid #DFE2E8;
+    text-align: right;
+    a{
+        font-size: 12px;
+        line-height: 16px;
+        color:  #737C8E;
+        font-weight: 700;
+        text-decoration: none;
+        margin-right: 24px;
+        display: block;
+        margin-bottom: 14px;
+        position: relative;
+        &:after{
+            transition: transform .3s , opacity .3s;
+            content: '';
+            right: -25px;
+            top: 50%;
+            width: 20px;
+            position: absolute;
+            height: 2px;
+            transform-origin: right;
+            background-color: ${({ theme }) => theme.colors.darkGrey};
+            transform: translateY(-50%)  scaleX(0);
+        }
+        &.active{
+            &:after{
+                transform: translateY(-50%)  scaleX(1);
+            }
+        }
+    }
 `;
 
 export const StyledLogoWrapper = styled.nav`
@@ -22,10 +50,5 @@ export const StyledLogoWrapper = styled.nav`
     color: #fff;
     font-size: 15px;
     font-weight: 700;
-    a{
-        font-size: 12px;
-        line-height: 16px;
-        color:  #737C8E;
-        font-weight: 400;
-    }
+    margin-bottom: 47px;
 `;

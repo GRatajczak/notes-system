@@ -1,15 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import PropTypes from 'prop-types'
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 import Average from 'components/atoms/Average/Average';
 import TitleUser from 'components/atoms/Title/Title';
 import SubtitleUser from 'components/atoms/SubtitleUser/SubtitleUser';
 import { StyledListElement, StyledButtonWrapper } from './UserListItem.styles';
+import { UsersContext } from 'providers/UserProvider';
 
 
-
-const UserListItem = ({deleteUser ,userData: {average, name, attendance = '0%'}}) => {
-
+const UserListItem = ({ userData: {average, name, attendance = '0%'}}) => {
+    const { deleteUser } = useContext(UsersContext);
     
     return (
         <StyledListElement>
