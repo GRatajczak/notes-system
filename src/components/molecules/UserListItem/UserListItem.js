@@ -27,6 +27,7 @@ const UserListItem = ({ userData: {average, name, attendance = '0%'}}) => {
     )
 }
 
+
 UserListItem.propTypes = {
     userData: PropTypes.shape({
         average: PropTypes.string.isRequired,
