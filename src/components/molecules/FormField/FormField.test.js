@@ -1,30 +1,10 @@
-import React, { useState } from 'react'
-import { render } from '@testing-library/react'
-
-const InputWithButton = () => {
-    const [input, setInputValue] = useState('');
-
-    const handleInputChange = (e) => setInputValue(e.target.value);
-
-    return (
-        <>
-            <input 
-                name="Name" 
-                value={input} 
-                onChange={handleInputChange}
-                id="name" 
-                placeholder="Enter the name" 
-            />
-            <button 
-                disabled={!input}
-            >
-                Submit
-            </button>
-        </>
-    )
-}
-
+import React from 'react'
+import FormField from './FormField'
+import {renderWithProvider} from 'helpers/renderWithProvider';
 
 describe('Input with button', () => {
-    
+    it('Render component' , () => {
+        renderWithProvider(<FormField label="label" name="name" id="id" />);
+    });
+
 })
