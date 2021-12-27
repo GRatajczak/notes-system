@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useReducer, useContext } from 'react';
 import {  FlexWrapper } from './Form.styles';
 import FormField from 'components/molecules/FormField/FormField';
 import {Button} from 'components/atoms/Button/Button';
@@ -24,22 +24,42 @@ const initialFormState = {
     average: '',
 };
 
+const reducer = (state, action) => {
+    switch (action.type){
+        case 'INPUT CHANGE': 
+        return {
+            ...state, 
+            [action.field]: action.value
+        }
+        case 'CLEAR VALUES':
+            return initialFormState;
+        default:
+            return state;
+    }
+}
+
 const From = () => {
     
-        const [formValues, setFormValues] = useState(initialFormState);
+        const [formValues, dispach] = useReducer(reducer, initialFormState);
         const { handleAddUser } = useContext(UsersContext);
     
         const handleInputChange = (e) => {
-        setFormValues({
-            ...formValues,
-            [e.target.name]: e.target.value,
-        });
+            dispach({
+                type: 'INPUT CHANGE',
+                field: e.target.name,
+                value: e.target.value
+            })
         };
     
         const handleSubmitUser = (e) => {
             e.preventDefault();
+            dispach({
+                type: 'INPUT CHANGE',
+                field: e.target.name,
+                value: e.target.value
+            })
             handleAddUser(formValues);
-            setFormValues(initialFormState);
+            dispach({type: 'CLEAR VALUES'});
         };
     
         return(
