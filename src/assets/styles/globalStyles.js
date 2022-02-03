@@ -12,8 +12,9 @@ export const GlobalStyles = createGlobalStyle`
         -webkit-text-size-adjust: 100%;
         font-size: 62.5%;
         scroll-behavior: smooth;
-        font-size: 1.6rem;
-        font-size: 2.2rem;
+        font-size: 16px;
+        font-size: 22px;
+        color: #737C8E;
         @include breakpoint-max('large') {
         font-size: 61%;
         }
@@ -29,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
+        background-color: #F7F8FA;
     }
     a, button {
         font-family: Montserrat, sans-serif;
