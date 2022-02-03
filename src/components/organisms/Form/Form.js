@@ -22,6 +22,8 @@ const initialFormState = {
     name: '',
     attendance: '',
     average: '',
+    consent: false,
+    error: ''
 };
 
 const reducer = (state, action) => {
@@ -31,8 +33,18 @@ const reducer = (state, action) => {
             ...state, 
             [action.field]: action.value
         }
+        case 'CONSENT TOGGLE':
+            return {
+                ...state,
+                consent: !state.consent
+            };
         case 'CLEAR VALUES':
             return initialFormState;
+        case 'THROW ERROR':
+            return {
+                ...state,
+                error: action.errorValue
+            };
         default:
             return state;
     }
@@ -53,27 +65,63 @@ const From = () => {
     
         const handleSubmitUser = (e) => {
             e.preventDefault();
-            dispach({
-                type: 'INPUT CHANGE',
-                field: e.target.name,
-                value: e.target.value
-            })
-            handleAddUser(formValues);
-            dispach({type: 'CLEAR VALUES'});
+            if(formValues.consent){
+                dispach({
+                    type: 'INPUT CHANGE',
+                    field: e.target.name,
+                    value: e.target.value
+                })
+                handleAddUser(formValues);
+                dispach({type: 'CLEAR VALUES'});
+
+            }else {
+                dispach({type: 'THROW ERROR', errorValue: 'You need to give consent!'});
+
+            }
         };
     
         return(
             <UsersContext.Consumer>
                 {(ctx) => (
                     <FlexWrapper>
-                        {console.log(ctx)}
                         <InputWrapper as="form" onSubmit={handleSubmitUser}>
                             <h3>Add new student</h3>
     
-                            <FormField label="Name" id="name" name="name" value={formValues.name} onChange={handleInputChange} />
-                            <FormField label="Attendance" id="attendance" name="attendance" value={formValues.attendance} onChange={handleInputChange} />
-                            <FormField label="Average" id="average" name="average" value={formValues.average} onChange={handleInputChange} />
+                            <FormField 
+                                label="Name" 
+                                id="name" 
+                                name="name" 
+                                value={formValues.name} 
+                                onChange={handleInputChange} 
+                            />
+                            <FormField 
+                                label="Attendance" 
+                                id="attendance" 
+                                name="attendance" 
+                                value={formValues.attendance} 
+                                onChange={handleInputChange} 
+                                />
+                            <FormField 
+                                label="Average" 
+                                id="average" 
+                                name="average" 
+                                value={formValues.average} 
+                                onChange={handleInputChange} 
+                            />
+                            <FormField 
+                                label="Consent" 
+                                type={'checkbox'} 
+                                id="average" 
+                                name="average" 
+                                value={formValues.average} 
+                                onChange={
+                                    () =>   dispach({
+                                        type: 'CONSENT TOGGLE'
+                                    })
+                                } 
+                            />
                             <Button >Save </Button>
+                            {formValues.error ? <p>{formValues.error}</p>: null}
                         </InputWrapper>
                     </FlexWrapper>
                     )}
