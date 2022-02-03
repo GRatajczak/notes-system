@@ -1,11 +1,39 @@
 import React, { useState } from 'react';
 import { users as usersData } from 'data/users';
+import Search from 'components/organisms/Search/Search';
+import styled from 'styled-components';
 
 export const UsersContext = React.createContext({
   users: [],
   handleAddUser: () => {},
   deleteUser: () => {},
 });
+
+const StyledFlexWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+`;
+
+const StyledChildrenWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    & > div {
+      margin: 30px auto;
+      height: 100%;
+    }
+`;
+
+const StyledSideWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    border-left: 1px solid ${({theme}) => theme.colors.grey};
+    padding: 10px 30px;
+    height: 100%;
+`;
 
 const UsersProvider = ({ children }) => {
   const [users, setUsers] = useState(usersData);
@@ -31,7 +59,20 @@ const UsersProvider = ({ children }) => {
         deleteUser,
       }}
     >
-      {children}
+      <StyledFlexWrapper>
+        <Search />
+        <StyledChildrenWrapper>
+          {children}
+        </StyledChildrenWrapper>
+      </StyledFlexWrapper>
+      <StyledSideWrapper>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+      </StyledSideWrapper>
     </UsersContext.Provider>
   );
 };
