@@ -11,9 +11,10 @@ import UsersProvider from 'providers/UserProvider';
 const StyledMainContainer = styled.div`
     display: flex;
     align-items: center;
-    padding-left: 160px;
+    padding: 0px 30px 0px 99px;
     position: relative;
-`
+    height: 100vh;
+`;
 
 const Root = () => {
   return (
