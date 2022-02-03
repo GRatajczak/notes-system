@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import UserListItem from 'components/molecules/UserListItem/UserListItem';
 import { StyledWrapper } from './UsersList.styles';
 import PropTypes, {UserShape} from 'prop-types'
@@ -12,7 +12,7 @@ const UsersList = ({ users }) => {
                             users.map(
                                 (userData, index) => (
                                     <UserListItem 
-                                        key={userData.name}
+                                        key={index}
                                         userData={userData}
                                     />
                                 )
