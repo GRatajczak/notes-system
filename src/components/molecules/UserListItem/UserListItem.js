@@ -16,7 +16,7 @@ const UserListItem = ({ userData: {average, name, attendance = '0%'}}) => {
             <Average number={Number(average)} marginRight={'24px'}/>
             <div>
                 <TitleUser title={name} />
-                <SubtitleUser percent={attendance}/>
+                <SubtitleUser text={`attendance: ${attendance}%`}/>
             </div>
             <StyledButtonWrapper>
                 <DeleteButton onClick={() => deleteUser(name)}>

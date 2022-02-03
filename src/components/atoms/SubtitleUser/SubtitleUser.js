@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledSubtitle } from 'components/atoms/SubtitleUser/SubtitleUser.styles';
 
-const SubtitleUser = ({percent}) => {
+const SubtitleUser = ({text}) => {
     return (
         <StyledSubtitle>
-            {`attendance: ${percent}%`}
+            {text}
         </StyledSubtitle>
     );
 };
 
 
 SubtitleUser.propTypes = {
-    percent: PropTypes.string
+    text: PropTypes.string
 };
 
 
