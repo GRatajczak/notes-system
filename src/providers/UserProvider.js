@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { users as usersData } from 'data/users';
 import Search from 'components/organisms/Search/Search';
 import styled from 'styled-components';
+import News from 'components/templates/News/News';
 
 export const UsersContext = React.createContext({
   users: [],
@@ -66,12 +67,7 @@ const UsersProvider = ({ children }) => {
         </StyledChildrenWrapper>
       </StyledFlexWrapper>
       <StyledSideWrapper>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
+        <News />
       </StyledSideWrapper>
     </UsersContext.Provider>
   );
