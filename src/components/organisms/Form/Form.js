@@ -1,7 +1,7 @@
 import React, { useReducer, useContext } from 'react';
 import {  FlexWrapper } from './Form.styles';
 import FormField from 'components/molecules/FormField/FormField';
-import {Button} from 'components/atoms/Button/Button';
+import Button from 'components/atoms/Button/Button';
 import styled from 'styled-components';
 import { UsersContext } from 'providers/UserProvider';
 
