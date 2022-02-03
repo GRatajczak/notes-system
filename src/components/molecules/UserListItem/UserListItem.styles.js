@@ -5,6 +5,7 @@ export const StyledListElement = styled.li`
     align-items: center;
     position: relative;
     padding: 12px 10px;
+    margin: 12px 0;
     justify-content: flex-start;
     &:not(:last-child)::after{
         content: '';
@@ -17,7 +18,7 @@ export const StyledListElement = styled.li`
     }
 `;
 
-export const StyledButtonWrapper = styled.li`
+export const StyledButtonWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-left: auto;
