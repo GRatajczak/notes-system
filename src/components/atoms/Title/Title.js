@@ -1,18 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {StyledTitle } from 'components/atoms/Title/Title.styles';
+import styled from 'styled-components';
 
-const TitleUser = ({title}) => {
-    return (
-        <StyledTitle>
-            {title}
-        </StyledTitle>
-    )
-}
+export const Title = styled.p`
+    font-weight: 700;
+    line-height: 23px;
+    color: ${({theme}) => theme.colors.darkGrey};
+    font-size: ${({theme}) => theme.fontSize.l};
+`;
 
-TitleUser.propTypes = {
-    title: PropTypes.string
-}
 
-export default TitleUser
+
+export default Title
 

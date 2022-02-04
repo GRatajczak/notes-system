@@ -7,7 +7,7 @@ import Card from 'components/molecules/Card/Card';
 const News = () => {
     return (
         <StyledWrapper>
-            <Title title="News feed section" />
+            <Title>News feed section</Title>
             <Card 
                 title="New computers for all lecturers" 
                 buttonText="Read more"

@@ -9,7 +9,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 const Card = ({title, subtitle, text, img, buttonText}) => {
     return (
         <StyledWrapper>
-            <Title title={title} />
+            <Title>{title}</Title>
             <SubtitleUser text={subtitle} />
             <Paragraph>{text}</Paragraph>
             <Button>{buttonText}</Button>

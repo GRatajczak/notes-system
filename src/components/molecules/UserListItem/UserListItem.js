@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import PropTypes from 'prop-types'
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 import Average from 'components/atoms/Average/Average';
-import TitleUser from 'components/atoms/Title/Title';
+import Title from 'components/atoms/Title/Title';
 import SubtitleUser from 'components/atoms/SubtitleUser/SubtitleUser';
 import { StyledListElement, StyledButtonWrapper } from './UserListItem.styles';
 import { UsersContext } from 'providers/UserProvider';
@@ -15,7 +15,7 @@ const UserListItem = ({ userData: {average, name, attendance = '0%'}}) => {
         <StyledListElement>
             <Average number={Number(average)} marginRight={'24px'}/>
             <div>
-                <TitleUser title={name} />
+                <Title>{name}</Title>
                 <SubtitleUser text={`attendance: ${attendance}%`}/>
             </div>
             <StyledButtonWrapper>
