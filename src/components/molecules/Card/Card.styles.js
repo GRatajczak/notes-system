@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Title from 'components/atoms/Title/Title';
+import SubtitleUser from "components/atoms/SubtitleUser/SubtitleUser";
 
 
 export const StyledWrapper = styled.div`

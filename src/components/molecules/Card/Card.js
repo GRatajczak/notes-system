@@ -10,7 +10,9 @@ const Card = ({title, subtitle, text, img, buttonText}) => {
     return (
         <StyledWrapper>
             <Title>{title}</Title>
-            <SubtitleUser text={subtitle} />
+            <SubtitleUser>
+                {subtitle}
+            </SubtitleUser>
             <Paragraph>{text}</Paragraph>
             <Button>{buttonText}</Button>
         </StyledWrapper>

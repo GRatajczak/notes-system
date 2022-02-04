@@ -1,19 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StyledSubtitle } from 'components/atoms/SubtitleUser/SubtitleUser.styles';
-
-const SubtitleUser = ({text}) => {
-    return (
-        <StyledSubtitle>
-            {text}
-        </StyledSubtitle>
-    );
-};
+import styled from 'styled-components'
 
 
-SubtitleUser.propTypes = {
-    text: PropTypes.string
-};
+ const SubtitleUser = styled.p`
+    font-weight: 400;
+    line-height: 14px;
+    color: ${({theme}) => theme.colors.grey};
+    font-size: ${({theme}) => theme.fontSize.s};
+`;
 
 
 export default SubtitleUser;
