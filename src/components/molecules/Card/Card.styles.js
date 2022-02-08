@@ -14,6 +14,18 @@ export const StyledWrapper = styled.div`
     }
     ${SubtitleUser}{
         display: block;
+        margin-top: 5px !important;
         margin-bottom: 20px !important;
+    }
+`;
+
+export const FlexWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    img {
+        object-fit: cover;
+        width: 40%;
+        display: block;
+
     }
 `;

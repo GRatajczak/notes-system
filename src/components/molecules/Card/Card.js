@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledWrapper } from './Card.styles';
+import { StyledWrapper, FlexWrapper } from './Card.styles';
 import Title from 'components/atoms/Title/Title';
 import SubtitleUser from 'components/atoms/SubtitleUser/SubtitleUser';
 import Button from 'components/atoms/Button/Button';
@@ -13,7 +13,10 @@ const Card = ({title, subtitle, text, img, buttonText}) => {
             <SubtitleUser>
                 {subtitle}
             </SubtitleUser>
-            <Paragraph>{text}</Paragraph>
+            <FlexWrapper>
+                <Paragraph>{text}</Paragraph>
+                { img && <img src={img} /> }
+            </FlexWrapper>
             <Button>{buttonText}</Button>
         </StyledWrapper>
     );
