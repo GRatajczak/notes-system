@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Input } from 'components/atoms/Input/Input';
 import { StyledWrapper, StatusInfo } from './Search.styles';
 
@@ -19,6 +18,5 @@ const Search = (props) => {
     );
 };
 
-Search.propTypes = {};
 
 export default Search;
