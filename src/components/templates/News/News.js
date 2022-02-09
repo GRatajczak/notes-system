@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import PropTypes from 'prop-types';
 import { StyledWrapper } from './News.styles';
 import Title from 'components/atoms/Title/Title';
 import Card from 'components/molecules/Card/Card';
@@ -62,6 +61,5 @@ const News = () => {
     );
 };
 
-News.propTypes = {};
 
 export default News;

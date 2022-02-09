@@ -1,14 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Form from 'components/organisms/Form/Form'
-const AddUser = props => {
-    return (
-        <Form />
-    )
-}
+import React from 'react';
+import Form from 'components/organisms/Form/Form';
 
-AddUser.propTypes = {
+const AddUser = () => {
+  return <Form />;
+};
 
-}
-
-export default AddUser
+export default AddUser;

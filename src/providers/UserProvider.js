@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { users as usersData } from 'data/users';
+import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
 import Search from 'components/organisms/Search/Search';
-import styled from 'styled-components';
 import News from 'components/templates/News/News';
+import { StyledFlexWrapper, StyledChildrenWrapper, StyledSideWrapper } from './UserProvider.styles';
+
 
 export const UsersContext = React.createContext({
   users: [],
@@ -10,34 +11,16 @@ export const UsersContext = React.createContext({
   deleteUser: () => {},
 });
 
-const StyledFlexWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    height: 100%;
-`;
 
-const StyledChildrenWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    & > div {
-      margin: 30px auto;
-      height: 100%;
-    }
-`;
-
-const StyledSideWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    border-left: 1px solid ${({theme}) => theme.colors.grey};
-    padding: 10px 30px;
-    height: 100%;
-`;
 
 const UsersProvider = ({ children }) => {
-  const [users, setUsers] = useState(usersData);
+
+  const [users, setUsers] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get('/students')
+  //   .then(data => console.log(data))
+  // },[]);
 
   const deleteUser = (name) => {
     const filteredUsers = users.filter((user) => user.name !== name);
