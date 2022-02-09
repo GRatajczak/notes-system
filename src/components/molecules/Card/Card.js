@@ -15,7 +15,7 @@ const Card = ({title, subtitle, text, img, buttonText}) => {
             </SubtitleUser>
             <FlexWrapper>
                 <Paragraph>{text}</Paragraph>
-                { img && <img src={img} /> }
+                { img && <img src={img} alt="obrazek"/> }
             </FlexWrapper>
             <Button>{buttonText}</Button>
         </StyledWrapper>
@@ -23,8 +23,11 @@ const Card = ({title, subtitle, text, img, buttonText}) => {
 };
 
 Card.propTypes = {
-
-
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    text: PropTypes.string,
+    img: PropTypes.string,
+    buttonText: PropTypes.string,
 };
 
 export default Card;
