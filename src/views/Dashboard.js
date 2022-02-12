@@ -1,8 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import UsersList from 'components/organisms/UsersList/UsersList';
 import axios from 'axios';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { Link } from 'react-router-dom';
+import UsersList from 'components/organisms/UsersList/UsersList';
+import Title from 'components/atoms/Title/Title';
+import styled from 'styled-components';
+
+const StyledNav = styled.nav`
+  display: flex;
+  align-items: center;
+  ${Title} {
+    margin-right: 15px;
+  }
+  a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: ${({ theme }) => theme.colors.black};
+    background-color: ${({ theme }) => theme.colors.white};
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 const Dashboard = () => {
   const [students, setStudents] = useState([]);
@@ -25,13 +48,14 @@ const Dashboard = () => {
 
   return (
     <>
-      <nav>
+      <StyledNav>
+        <Title>Groups: </Title>
         {groups.map((group) => (
           <Link key={group} to={`/group/${group}`}>
             {group}{' '}
           </Link>
         ))}
-      </nav>
+      </StyledNav>
       <UsersList users={students} />
     </>
   );
