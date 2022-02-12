@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+import React, { useState } from 'react';
 import Search from 'components/organisms/Search/Search';
 import News from 'components/templates/News/News';
-import { StyledFlexWrapper, StyledChildrenWrapper, StyledSideWrapper } from './UserProvider.styles';
-
+import {
+  StyledFlexWrapper,
+  StyledChildrenWrapper,
+  StyledSideWrapper,
+} from './UserProvider.styles';
 
 export const UsersContext = React.createContext({
   users: [],
@@ -11,16 +13,8 @@ export const UsersContext = React.createContext({
   deleteUser: () => {},
 });
 
-
-
 const UsersProvider = ({ children }) => {
-
   const [users, setUsers] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get('/students')
-  //   .then(data => console.log(data))
-  // },[]);
 
   const deleteUser = (name) => {
     const filteredUsers = users.filter((user) => user.name !== name);
@@ -45,9 +39,7 @@ const UsersProvider = ({ children }) => {
     >
       <StyledFlexWrapper>
         <Search />
-        <StyledChildrenWrapper>
-          {children}
-        </StyledChildrenWrapper>
+        <StyledChildrenWrapper>{children}</StyledChildrenWrapper>
       </StyledFlexWrapper>
       <StyledSideWrapper>
         <News />
