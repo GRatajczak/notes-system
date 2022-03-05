@@ -3,12 +3,16 @@ import UserListItem from 'components/molecules/UserListItem/UserListItem';
 import { StyledWrapper } from './UsersList.styles';
 import PropTypes, { UserShape } from 'prop-types';
 
-const UsersList = ({ users }) => {
+const UsersList = ({ users, handleOpenStudentDetails }) => {
   return (
     <StyledWrapper>
       <ul>
         {users.map((userData, index) => (
-          <UserListItem key={index} userData={userData} />
+          <UserListItem
+            onClick={handleOpenStudentDetails}
+            key={index}
+            userData={userData}
+          />
         ))}
       </ul>
     </StyledWrapper>

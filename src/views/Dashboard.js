@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import UsersList from 'components/organisms/UsersList/UsersList';
 import Title from 'components/atoms/Title/Title';
 import styled from 'styled-components';
+import { useModal } from 'hooks/useModal';
+import Modal from 'components/organisms/Modal/Modal';
 
 const StyledNav = styled.nav`
   display: flex;
@@ -30,7 +32,15 @@ const StyledNav = styled.nav`
 const Dashboard = () => {
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
+  const { handleCloseModal, handleOpenModal, modalState } = useModal();
   const { id } = useParams();
+
+  const handleOpenStudentDetails = (id) => {
+    console.log(id);
+    setCurrentUser();
+    handleOpenModal();
+  };
 
   useEffect(() => {
     axios
@@ -56,7 +66,15 @@ const Dashboard = () => {
           </Link>
         ))}
       </StyledNav>
-      <UsersList users={students} />
+      <UsersList
+        handleOpenStudentDetails={handleOpenStudentDetails}
+        users={students}
+      />
+      {modalState && (
+        <Modal isOpen={modalState} handleClose={handleCloseModal}>
+          {currentUser}
+        </Modal>
+      )}
     </>
   );
 };
