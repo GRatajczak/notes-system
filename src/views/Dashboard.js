@@ -58,23 +58,25 @@ const Dashboard = () => {
 
   return (
     <>
-      <StyledNav>
-        <Title>Groups: </Title>
-        {groups.map((group) => (
-          <Link key={group} to={`/group/${group}`}>
-            {group}{' '}
-          </Link>
-        ))}
-      </StyledNav>
-      <UsersList
-        handleOpenStudentDetails={handleOpenStudentDetails}
-        users={students}
-      />
-      {modalState && (
-        <Modal isOpen={modalState} handleClose={handleCloseModal}>
-          {currentUser}
-        </Modal>
-      )}
+      <>
+        <StyledNav>
+          <Title>Groups: </Title>
+          {groups.map((group) => (
+            <Link key={group} to={`/group/${group}`}>
+              {group}{' '}
+            </Link>
+          ))}
+        </StyledNav>
+        <UsersList
+          handleOpenStudentDetails={handleOpenStudentDetails}
+          users={students}
+        />
+        {modalState && (
+          <Modal isOpen={modalState} handleClose={handleCloseModal}>
+            {currentUser}
+          </Modal>
+        )}
+      </>
     </>
   );
 };
